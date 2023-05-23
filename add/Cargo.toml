@@ -1,0 +1,4 @@
+[package]
+name = "add"
+version = { workspace = true }
+edition = { workspace = true }
