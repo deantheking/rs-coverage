@@ -5,7 +5,7 @@ set -e
 export RUSTFLAGS="-Cinstrument-coverage"
 export LLVM_PROFILE_FILE="default-%p-%m.profraw"
 
-cargo build
+# cargo build
 cargo test -p sub
 
 mkdir tmp
