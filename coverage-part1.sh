@@ -10,6 +10,6 @@ cargo test -p add
 
 mkdir tmp
 
-file_name=coverage-part1.tar.bz2
-tar cjf "$file_name" $(find . \( -name "*.rcgu.o" -o -name "*.d" -o -name "*.profraw" \) -print0 | xargs -0)
+file_name=coverage-part1.profdata
+llvm-profdata merge -sparse -o "$file_name" $(find . -name '*.profraw' -print0 | xargs -0)
 buildkite-agent artifact upload "$file_name"
