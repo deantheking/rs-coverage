@@ -28,6 +28,6 @@ files=$(
 )
 llvm-cov export $files --instr-profile=solana.profdata --format=lcov > lcov.info
 
-curl -Os https://uploader.codecov.io/latest/macos/codecov
+curl -Os https://uploader.codecov.io/latest/linux/codecov
 chmod +x codecov
 ./codecov
