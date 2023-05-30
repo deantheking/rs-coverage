@@ -11,6 +11,7 @@ artifacts=(coverage-part1.tar.bz2 coverage-part2.tar.bz2)
 for artifact in "${artifacts[@]}"; do
   buildkite-agent artifact download "$artifact" .
   tar xjf "$artifact" -C tmp/
+  find tmp \( -name "*.rcgu.o" -o -name "*.d" \) -exec mv {} target/debug/deps \;
 done
 
 llvm-profdata merge -sparse -o solana.profdata $(find . -name '*.profraw' -print0 | xargs -0)
