@@ -5,8 +5,8 @@ set -e
 export RUSTFLAGS="-Cinstrument-coverage"
 export LLVM_PROFILE_FILE="default-%p-%m.profraw"
 
-# cargo build
-cargo test -p add
+cargo build
+cargo nextest run -p add
 
 mkdir tmp
 
