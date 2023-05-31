@@ -6,10 +6,7 @@ export RUSTFLAGS="-Cinstrument-coverage"
 export LLVM_PROFILE_FILE="default-%p-%m.profraw"
 cargo build
 
-artifacts=(coverage-part1.profdata coverage-part2.profdata)
-for artifact in "${artifacts[@]}"; do
-  buildkite-agent artifact download "$artifact" .
-done
+buildkite-agent artifact download "coverage*.profdata" .
 
 llvm-profdata merge -sparse -o solana.profdata $(find . -name '*.profdata' -print0 | xargs -0)
 
